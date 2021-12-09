@@ -1,0 +1,84 @@
+{
+  "intents": [
+    {"tag": "greeting",
+     "patterns": ["Chào bạn", "Bạn khỏe không?", "Có ai ở đó không?","Hey","Hola", "Xin chào", "ngày tốt", "Ekse", "chào"],
+     "responses": ["Chào bạn nha", "Vâng, tôi có thể giúp gì cho bạn?", "xin chào bạn", "Rất vui được gặp bạn", "Mình có thể giúp gì cho bạn?"]
+    },
+    {"tag": "goodbye",
+     "patterns": ["Tạm biệt", "Hẹn gặp lại bạn", "bye", "Bye Bye"],
+     "responses": ["Tạm biệt bạn!", "Chúc bạn một ngày tốt lành!", "Tạm biệt!", "Hẹn một ngày gặp lại bạn!"]
+    },
+    {"tag": "thanks",
+     "patterns": ["Cảm ơn", "Cảm ơn bạn", "Thật là hữu ích", "Thật sự cảm ơn", "Cảm ơn bạn đã giúp tôi"],
+     "responses": ["Rất vui được giúp đỡ bạn", "Hân hạnh", "Không có gì đâu bạn", "Đó là trách nhiệm của tôi", "Đó là niềm vinh dự của tôi"]
+    },
+    {"tag": "noanswer",
+     "patterns": ["rreh", "rrrhrgeh","rreêfweehh","rrfefeaeh","rrfnrjnreh","rregeh","egge","rreegwsh","rjejraeJ","êgge","rrgehrweh", " "],
+     "responses": ["Xin lỗi, tôi không nghe bạn nói gì", "Vui lòng cho tôi biết thêm thông tin", "Không chắc là tôi hiểu", "Tôi vẫn ở đây anh bạn", "Bạn có ý gì?"]
+    },
+    {"tag": "name",
+      "patterns": ["Bạn tên gì?", "Tên của bạn là gì", "Hãy cho tôi biết tên của bạn", "Bạn là ai vậy?", "Tôi muốn biết tên của bạn", "Bạn là ..."],
+      "responses": ["Tôi là Nam, bạn của Phúc Trang", "Tên của tôi là Nam", "Bạn có thể gọi tôi là Nam", "Tôi là Nam, bạn có thể gọi tôi là Nam còi", "Nam là tên của tôi"]
+    },
+    {"tag": "options",
+      "patterns": ["Công việc của bạn là gì", "Bạn có thể tư vấn điện thoại giúp tôi không", "Tư vấn điện thoại", "Tư vấn cho tôi điện thoại với", "Hãy tư vấn cho tôi về điện thoại"],
+      "responses": ["Tôi có thể tư vấn cho bạn thông tin về bất kỳ sản phẩm điện thoại, hãy chọn một hãng mà bạn cần tư vấn nhé!", "Công việc của tôi là một tư vấn viên về điện thoại, hãy chọn hãng điện thoại mà bạn cần tư vấn nhé!"]
+    },
+    {"tag": "iphone",
+      "patterns": ["iphone", "điện thoại iphone","điện thoại iphone", "tư vấn giúp tôi hãng iphone", "thông tin điện thoại iphone", "Bạn biết hãng iphone không?", "Hãy tư vấn cho tôi hãng iphone"],
+      "responses": ["iPhone là dòng điện thoại thông minh của hãng Apple Inc., có trụ sở chính ở Mỹ, và chạy hệ điều hành iOS của chính Apple, sản phẩm vừa ra mắt là iphone 13 vô cùng thời thượng!"]
+    },
+    {"tag": "iphone_dangmua",
+      "patterns": ["điện thoại iphone đáng mua nhất hiện tại", "dòng iphone đáng mua","sản phẩm iphone đáng mua nhất", "điện thoại iphone đáng mua 2022", "thông tin điện thoại iphone đáng mua", "Bạn biết hãng iphone nào đáng mua không?", "Hãy tư vấn cho tôi hãng iphone đáng mua"],
+      "responses": ["5+ điện thoại iPhone đáng mua nhất 2021 giảm giá cực mạnh \niPhone 12 Pro Max – Giá từ: 29.59 triệu. \niPhone 12 Pro – Giá từ: 25.99 triệu. \niPhone 12 mini – Giá từ: 14.99 triệu. \niPhone 11 Pro Max – Giá từ: 18.29 triệu."]
+    },
+    {"tag": "samsung",
+      "patterns": ["samsung", "điện thoại samsung","điện thoại samsung", "tư vấn giúp tôi hãng samsung", "thông tin điện thoại samsung", "Bạn biết hãng samsung không?", "Hãy tư vấn cho tôi hãng samsung"],
+      "responses": ["Samsung là thương hiệu điện thoại của Hàn Quốc bạn nhé", "Samsung là thương hiệu điện thoại của Hàn Quốc bạn nhé, Đây là công ty con hàng đầu trong cơ cấu tổ chức của tập đoàn Samsung và đã trở thành công ty công nghệ lớn nhất trên thế giới tính theo doanh thu kể từ năm 2009"]
+    },
+    {"tag": "samsung_dangmua",
+      "patterns": ["điện thoại samsung đáng mua nhất hiện tại", "dòng samsung đáng mua","sản phẩm samsung đáng mua nhất", "điện thoại samsung đáng mua 2022", "thông tin điện thoại samsung đáng mua", "Bạn biết hãng samsung nào đáng mua không?", "Hãy tư vấn cho tôi hãng samsung đáng mua"],
+      "responses": ["+9 điện thoại samsung đáng mua nhất 2021 \n Điện thoại Samsung Galaxy A22\nĐiện thoại Samsung Galaxy A51 (6GB/128GB)\nĐiện thoại Samsung Galaxy A32\nĐiện thoại Samsung Galaxy M51\nĐiện thoại Samsung Galaxy A52 (8GB/128GB)\nĐiện thoại Samsung Galaxy A52 5G\nĐiện thoại Samsung Galaxy A72\nĐiện thoại Samsung Galaxy Note 20"]
+    },
+    {"tag": "oppo",
+      "patterns": ["oppo", "điện thoại oppo","điện thoại oppo", "tư vấn giúp tôi hãng oppo", "thông tin điện thoại oppo", "Bạn biết hãng oppo không?", "Hãy tư vấn cho tôi hãng oppo"],
+      "responses": ["Thương hiệu Oppo( có tên đầy đủ là OPPO Electronics Corp) là nhà sản xuất các thiết bị điện tử có trụ sở đặt tại Đông Hoản, Quảng Đông, Trung Quốc"]
+    },
+    {"tag": "oppo_dangmua",
+      "patterns": ["điện thoại oppo đáng mua nhất hiện tại", "dòng oppo đáng mua","sản phẩm oppo đáng mua nhất", "điện thoại oppo đáng mua 2022", "thông tin điện thoại oppo đáng mua", "Bạn biết hãng oppo nào đáng mua không?", "Hãy tư vấn cho tôi hãng oppo đáng mua"],
+      "responses": ["Dưới đây là danh sách những mẫu điện thoại Oppo tốt nhất năm nay.\nOppo Find X2 Pro. Find X2 Pro là chiếc điện thoại tốt nhất của Oppo hiện nay, từ màn hình hiển thị, bộ vi xử lý, cụm camera đến phần mềm đều thuộc hàng cao cấp.\nOppo Reno 10x Zoom.\nOppo Reno 2.\nOppo Reno 2Z.\nOppo Reno Z.\nOppo Reno.\nOppo A9 2020."]
+    },
+    {"tag": "nokia",
+      "patterns": ["nokia", "điện thoại nokia","điện thoại nokia", "tư vấn giúp tôi hãng nokia", "thông tin điện thoại nokia", "Bạn biết hãng nokia không?", "Hãy tư vấn cho tôi hãng nokia"],
+      "responses": ["Điện thoại Nokia là một trong những thương hiệu vang bóng một thời với hàng chục năm đứng trên đỉnh thị trường điện thoại di động thế giới. Được đông đảo người dùng lựa chọn bởi thiết kế đẹp mắt, độ bền cao và giá cả phải chăng."]
+    },
+    {"tag": "nokia_dangmua",
+      "patterns": ["điện thoại nokia đáng mua nhất hiện tại", "dòng nokia đáng mua","sản phẩm nokia đáng mua nhất", "điện thoại nokia đáng mua 2022", "thông tin điện thoại nokia đáng mua", "Bạn biết hãng nokia nào đáng mua không?", "Hãy tư vấn cho tôi hãng nokia đáng mua"],
+      "responses": ["Top 5 điện thoại nokia đáng mua nhất hiện tại:\nNokia 3.1 - Smartphone giá rẻ, chất lượng camera vượt mong đợi.\nNokia 5.3 - Hệ thống 4 camera bắt trọn mọi khoảnh khắc.\nNokia 6.1 Plus.\nNokia 8.1 - Smartphone tầm trung đáng giá.\nNokia C2 - Smartphone giá dưới 2 triệu đáng mua."]
+    },
+    {"tag": "sony",
+      "patterns": ["sony", "điện thoại sony","điện thoại sony", "tư vấn giúp tôi hãng sony", "thông tin điện thoại sony", "Bạn biết hãng sony không?", "Hãy tư vấn cho tôi hãng sony"],
+      "responses": ["Sony là một tập đoàn đa quốc gia có trụ sở chính đặt tại Minato Tokyo, Nhật Bản. Sony là một trong những tập đoàn điện tử hàng đầu thế giới với hơn 168.000 nhân viên trên khắp toàn cầu và doanh thu lên đến 72,34 tỉ USD (theo số liệu 2013)."]
+    },
+    {"tag": "sony_dangmua",
+      "patterns": ["điện thoại sony đáng mua nhất hiện tại", "dòng sony đáng mua","sản phẩm sony đáng mua nhất", "điện thoại sony đáng mua 2022", "thông tin điện thoại sony đáng mua", "Bạn biết hãng sony nào đáng mua không?", "Hãy tư vấn cho tôi hãng sony đáng mua"],
+      "responses": ["Top 3 điện thoại nokia đáng mua nhất hiện tại:\nSony Xperia 1 III giá chỉ ~5 triệu\nSony Xperia XZ3 giá rẻ chỉ từ 3.5 triệu\nSony Xperia XZ2 giá chỉ từ 2.5 triệu"]
+    },
+    {"tag": "vmast",
+      "patterns": ["vmast", "điện thoại vmast","điện thoại vmast", "tư vấn giúp tôi hãng vmast", "thông tin điện thoại vmast", "Bạn biết hãng vmast không?", "Hãy tư vấn cho tôi hãng vmast"],
+      "responses": ["Vsmart là thương hiệu điện thoại đến từ Công ty Cổ phần Nghiên cứu và Sản xuất VinSmart - một công ty tiên phong trong lĩnh vực công nghệ"]
+    },
+    {"tag": "vmast_dangmua",
+      "patterns": ["điện thoại vmast đáng mua nhất hiện tại", "dòng vmast đáng mua","sản phẩm vmast đáng mua nhất", "điện thoại vmast đáng mua 2022", "thông tin điện thoại vmast đáng mua", "Bạn biết hãng vmast nào đáng mua không?", "Hãy tư vấn cho tôi hãng vmast đáng mua"],
+      "responses": ["Top 3 điện thoại vmast đáng mua nhất hiện tại:\nVmast aris giá chỉ ~5 triệu\nVmast active 3 giá rẻ chỉ từ 3.5 triệu\nVmast live 4 giá chỉ hơn 3 triệu"]
+    },
+    {"tag": "xiaomi",
+      "patterns": ["xiaomi", "điện thoại xiaomi","điện thoại xiaomi", "tư vấn giúp tôi hãng xiaomi", "thông tin điện thoại xiaomi", "Bạn biết hãng xiaomi không?", "Hãy tư vấn cho tôi hãng xiaomi"],
+      "responses": ["Xiaomi Inc. là một Tập đoàn sản xuất hàng điện tử Trung Quốc có trụ sở tại Thâm Quyến. Xiaomi là nhà sản xuất điện thoại thông minh lớn thứ 2 thế giới"]
+    },
+    {"tag": "xiaomi_dangmua",
+      "patterns": ["điện thoại xiaomi đáng mua nhất hiện tại", "dòng xiaomi đáng mua","sản phẩm xiaomi đáng mua nhất", "điện thoại xiaomi đáng mua 2022", "thông tin điện thoại xiaomi đáng mua", "Bạn biết hãng xiaomi nào đáng mua không?", "Hãy tư vấn cho tôi hãng xiaomi đáng mua"],
+      "responses": ["Top 3 điện thoại xiaomi đáng mua nhất hiện tại:\nXiaomi poco x3 NFC giá chỉ ~4,5 triệu\nRedmi Note 10 giá rẻ chỉ từ 4 triệu\nRedmi 10 giá chỉ hơn 3 triệu"]
+    }
+  ]
+}

@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Trang thông tin điện tử Vân Canh</title>
+</head>
+<style>
+    * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    }
+
+    body {
+        font-family: 'Nunito', sans-serif;
+        font-weight: 400;
+        font-size: 100%;
+        background: #F1F1F1;
+    }
+
+    *, html {
+        --primaryGradient: linear-gradient(93.12deg, #581B98 0.52%, #9C1DE7 100%);
+        --secondaryGradient: linear-gradient(268.91deg, #581B98 -2.14%, #9C1DE7 99.69%);
+        --primaryBoxShadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+        --secondaryBoxShadow: 0px -10px 15px rgba(0, 0, 0, 0.1);
+        /* --primary: #581B98; */
+        --primary: #116626;
+        color: rgb(19, 18, 18);
+        font-weight: bold;
+    }
+
+    /* CHATBOX
+    =============== */
+    .chatbox {
+        position: absolute;
+        bottom: 30px;
+        right: 30px;
+    }
+
+    /* CONTENT IS CLOSE */
+    .chatbox__support {
+        display: flex;
+        flex-direction: column;
+        background: #eee;
+        width: 300px;
+        height: 350px;
+        z-index: -123456;
+        opacity: 0;
+        transition: all .5s ease-in-out;
+    }
+
+    /* CONTENT ISOPEN */
+    .chatbox--active {
+        transform: translateY(-40px);
+        z-index: 123456;
+        opacity: 1;
+
+    }
+
+    /* BUTTON */
+    .chatbox__button {
+        text-align: right;
+    }
+
+    .send__button {
+        padding: 6px;
+        background: transparent;
+        border: none;
+        outline: none;
+        cursor: pointer;
+    }
+
+
+    /* HEADER */
+    .chatbox__header {
+        position: sticky;
+        top: 0;
+        background: orange;
+    }
+
+    /* MESSAGES */
+    .chatbox__messages {
+        margin-top: auto;
+        display: flex;
+        overflow-y: scroll;
+        flex-direction: column-reverse;
+    }
+
+    .messages__item {
+        background: orange;
+        max-width: 60.6%;
+        width: fit-content;
+    }
+
+    .messages__item--operator {
+        margin-left: auto;
+    }
+
+    .messages__item--visitor {
+        margin-right: auto;
+    }
+
+    /* FOOTER */
+    .chatbox__footer {
+        position: sticky;
+        bottom: 0;
+    }
+
+    .chatbox__support {
+        background: #fafbfc;
+        height: 450px;
+        width: 350px;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+    }
+
+    /* HEADER */
+    .chatbox__header {
+        background: var(--primaryGradient);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        padding: 15px 20px;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        box-shadow: var(--primaryBoxShadow);
+    }
+
+    .chatbox__image--header {
+        margin-right: 10px;
+    }
+
+    .chatbox__heading--header {
+        font-size: 1.2rem;
+        color: white;
+    }
+
+    .chatbox__description--header {
+        font-size: .9rem;
+        color: white;
+    }
+
+    /* Messages */
+    .chatbox__messages {
+        padding: 0 20px;
+    }
+
+    .messages__item {
+        margin-top: 10px;
+        background: #E0E0E0;
+        padding: 8px 12px;
+        max-width: 70%;
+    }
+
+    .messages__item--visitor,
+    .messages__item--typing {
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+    }
+
+    .messages__item--operator {
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        border-bottom-left-radius: 20px;
+        background: var(--primary);
+        color: white;
+    }
+
+    /* FOOTER */
+    .chatbox__footer {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 20px;
+        background: var(--secondaryGradient);
+        box-shadow: var(--secondaryBoxShadow);
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+        margin-top: 20px;
+    }
+
+    .chatbox__footer input {
+        width: 80%;
+        border: none;
+        padding: 10px 10px;
+        border-radius: 30px;
+        text-align: left;
+    }
+
+    .chatbox__send--footer {
+        color: white;
+    }
+
+    .chatbox__button button,
+    .chatbox__button button:focus,
+    .chatbox__button button:visited {
+        padding: 10px;
+        background: white;
+        border: none;
+        outline: none;
+        border-top-left-radius: 50px;
+        border-top-right-radius: 50px;
+        border-bottom-left-radius: 50px;
+        box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+    }
+</style>
+<style>
+
+    html {
+
+    background: #777;
+
+    }
+
+    body {
+
+    margin: 0;
+
+    padding:0;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 12px;
+
+    line-height: 1.5em;
+
+    color: #fff;
+
+    width: 100%;
+
+    display: table;
+
+    }
+
+    #templatemo_container {
+
+    width: 940px;
+
+    margin: auto;
+
+    background: url('https://scontent.fdad3-5.fna.fbcdn.net/v/t39.30808-6/265197886_438460144431734_8719559073490063076_n.jpg?_nc_cat=106&ccb=1-5&_nc_sid=730e14&_nc_ohc=ivYXDxaqB44AX-peoLr&_nc_ht=scontent.fdad3-5.fna&oh=f98d44735fd2d7eb60463cf523b5f37b&oe=61B57F08');
+
+    }
+
+    #templatemo_header_section {
+
+    width: 940px;
+
+    height: 293px;
+
+    background: url('https://scontent.fdad3-4.fna.fbcdn.net/v/t39.30808-6/264638359_438460247765057_7964377551186308431_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=730e14&_nc_ohc=ZJvsF6AvQwwAX8rmSLT&_nc_ht=scontent.fdad3-4.fna&oh=a06d3ee09a8673124529fb408a082961&oe=61B4F29B') no-repeat;
+
+
+    }
+    /* Head Menu */
+
+    #templatemo_menu {
+    float: left;
+    width: 210px;
+    height: 20px;
+    margin-left:700px;
+    }
+
+    * html #templatemo_menu{
+    margin-left: 350px;
+    }
+
+    #templatemo_menu ul {
+    float: left;
+    width: 210px;
+    margin: 0;
+    padding: 7px 0 0 0;
+    list-style: none;
+    }
+
+
+    #templatemo_menu ul li{
+    display: inline;
+    }
+
+    #templatemo_menu ul li a{
+    float: left;
+    padding-left:10px;
+    margin-left:5px;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: #7f7f7f;
+    background:url('https://scontent.fdad3-3.fna.fbcdn.net/v/t39.30808-6/cp0/263930817_438460214431727_7580677797207594337_n.jpg?_nc_cat=100&ccb=1-5&_nc_sid=730e14&_nc_ohc=yib8KEwoqosAX-atx6-&_nc_ht=scontent.fdad3-3.fna&oh=d7d469505e7ac23b339b2f2be86ea55c&oe=61B4588A') no-repeat;
+    }
+
+    #templatemo_menu li a:hover, #templatemo_menu li .current{
+    color: #058fdd;
+    }
+
+    /* Menu */
+
+    .templatemo_ver_menu {
+
+    float: right;
+
+    width: 235px;
+
+    margin: 113px 40px 0px 0px;
+
+    }
+
+    * html .templatemo_ver_menu {
+
+
+    margin: 108px 20px 0px 0px;
+
+    }
+
+
+    .templatemo_ver_menu ul {
+
+    list-style-type: none;
+
+    padding: 0;
+
+    margin: 0px;
+
+    width: 235px;
+
+    }
+
+    .templatemo_ver_menu li a {
+
+    display: block;
+
+    height: 25px;
+
+    padding-top: 7px;
+
+    color: #fff;
+
+    padding-left: 50px;
+
+    font-weight: bold;
+
+    background: url('https://scontent.fdad3-3.fna.fbcdn.net/v/t39.30808-6/264088654_438460297765052_4684097755731366026_n.jpg?_nc_cat=111&ccb=1-5&_nc_sid=730e14&_nc_ohc=bc4-CYzxloMAX84mByV&_nc_ht=scontent.fdad3-3.fna&oh=07f6fa5683140a4b3924fc8ebef03cef&oe=61B49394');
+
+    text-decoration:none;
+
+    }
+
+    .templatemo_ver_menu li a:hover, .templatemo_ver_menu li .current {
+
+    background: url('https://scontent.fdad3-1.fna.fbcdn.net/v/t39.30808-6/264776238_438460347765047_4021535423681585622_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=730e14&_nc_ohc=5TinuFJYA74AX-IPV0O&tn=txMtl062vm3NfXl6&_nc_ht=scontent.fdad3-1.fna&oh=5c67e2a2e388eada7a68818b91112db8&oe=61B4A1A1');
+
+    text-decoration:none;
+
+    }
+    /* End of Menu */
+
+
+    #templatemo_content{
+    float:left;
+    background: url('https://scontent.fdad3-2.fna.fbcdn.net/v/t39.30808-6/264845537_438460201098395_157840190529625157_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=730e14&_nc_ohc=er66ieDbOWYAX8oetTX&_nc_ht=scontent.fdad3-2.fna&oh=532fdb03f8e3b3cc13d62658d8a85b7d&oe=61B548A9') repeat-x #ABABAB;
+    width: 940px;
+    }
+
+    #templatemo_left_section{
+    float:left;
+    width:260px;
+    height:507px;
+    background:url('https://scontent.fdad3-2.fna.fbcdn.net/v/t39.30808-6/265225702_438460287765053_9194933322530880074_n.jpg?_nc_cat=107&ccb=1-5&_nc_sid=730e14&_nc_ohc=tSyAC3KhifYAX-3STTV&_nc_ht=scontent.fdad3-2.fna&oh=e894cc54abfe6d0aa63196e90ed2e7e8&oe=61B5312E');
+    margin:0px;
+
+    }
+
+    #templatemo_left_section .validater{
+    float:left;
+    width:200px;
+    height:120px;
+    margin:380px 0px 0px 15px;
+    text-align:center;
+    }
+
+    #templatemo_left_section .validater a{
+    color:#fff;
+    text-decoration:none;
+    }
+
+    #templatemo_left_section .validater a:hover{
+    color:#fff;
+    text-decoration:none;
+    }
+
+    #templatemo_center_section{
+    float:left;
+    width:370px;
+    padding-top:5px;
+    }
+
+    #templatemo_center_section .new{
+    margin: 0px 10px 3px 10px;
+    }
+
+    #templatemo_center_section .new h2{
+    color: #AA3300;
+    font-size:12px;
+    margin:0px;
+    }
+
+    #templatemo_center_section .new p{
+    color: #fff;
+    font-size:11px;
+    text-align:justify;
+
+    }
+
+    #templatemo_center_section .new  a{
+    color :#66d2ff;
+    text-decoration:none;
+
+    }
+
+    #templatemo_center_section .new  img{
+    float:right;
+    border:none;
+    margin: 5px 10px 5px 0px;
+
+    }
+
+    #templatemo_center_section .new .product {
+    margin: 0px 10px 0px 10px;
+    width: 330px;
+    height:100px;
+    }
+
+
+    #templatemo_center_section .new .product img{
+    float:left;
+    border:none;
+    margin: 3px 0px 3px 5px;
+    }
+
+    #templatemo_center_section .new .product .product_text{
+    float:left;
+    margin-left: 5px;
+    width: 235px;
+    }
+
+    #templatemo_center_section .new .product .product_text h3{
+    margin : 2px 0px 3px 0px;
+    color: #0066CC;
+    font-size:9px;
+
+    }
+
+    #templatemo_center_section .new .product .product_text p{
+    margin : 0px 3px 0px 3px;
+    color:#fff;
+    font-size:9px;
+    text-align:justify;
+    }
+
+    #templatemo_center_section .new .product .product_text span a{
+    color:#ff0000;
+    font-size:9px;
+    text-decoration:none;
+    }
+
+    span.price {
+    color: #333333;
+    font-size:9px;
+    margin:0px;
+    }
+
+    span.detail {
+    color:#ff0000;
+    font-size:9px;
+    text-decoration:none;
+    }
+
+    #templatemo_right_section{
+    float:right;
+    width:295px;
+    height:507px;
+    }
+
+    #templatemo_right_section .hot{
+    float:right;
+    width:255px;
+    height:189px;
+    background:url('https://scontent.fdad3-4.fna.fbcdn.net/v/t39.30808-6/263689836_438460411098374_4355677641358108265_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=730e14&_nc_ohc=EIXzO1yrMacAX-8_rnn&_nc_ht=scontent.fdad3-4.fna&oh=50c7298af722399fb51a8a2b33c9d94c&oe=61B5BE91');
+    margin: 0px 40px 0px 0px;
+
+
+    }
+
+    * html #templatemo_right_section .hot{
+    margin-right:20px;
+    }
+
+    #templatemo_right_section .hot .hot_text{
+    float:right;
+    width:150px;
+    height:100px;
+    margin: 30px 10px 0px 0px;
+
+    }
+
+    #templatemo_right_section .hot .hot_text h2{
+    color:#66d2ff;
+    font-size:11px;
+
+    }
+
+    #templatemo_right_section .hot .hot_text p{
+    color:#666;
+    font-size:10px;
+    text-align:justify;
+
+    }
+
+    #templatemo_right_section .hot .hot_text a{
+    color:#66d2ff;
+    text-decoration:none;
+
+
+    }
+
+    #templatemo_right_section .promotion{
+    width:235px;
+    height:314px;
+    background:url('https://scontent.fdad3-3.fna.fbcdn.net/v/t39.30808-6/264115308_438460434431705_753796987767352438_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=730e14&_nc_ohc=LBL_7OzoDaEAX8fZIdl&_nc_ht=scontent.fdad3-3.fna&oh=3cc1336ee6c0b42ac6dc5f3ca1765546&oe=61B4F942') no-repeat;
+    float:right;
+    margin-right:40px;
+
+
+    }
+
+    * html #templatemo_right_section .promotion{
+    margin-right:20px;
+
+    }
+
+    #templatemo_right_section .promotion h1{
+    color :#2f92d7;
+    font-size:18px;
+    margin-left:10px;
+
+    }
+
+    #templatemo_right_section .promotion h2{
+    color :#fff;
+    font-size:12px;
+    margin-left:10px;
+
+    }
+
+    #templatemo_right_section .promotion p{
+    color :#808080;
+    font-size:11px;
+    margin:0px 10px 0px 10px;
+    text-align:justify;
+
+    }
+
+    #templatemo_right_section .promotion a{
+    color :#fff;
+    text-decoration:none;
+
+    }
+
+    #templatemo_right_section .promotion img{
+    float:right;
+    margin-right:20px;
+    border:none;
+
+    }
+</style>
+  
+<body style="background-color: #343536;">
+    <div id="templatemo_container">
+        
+        <div id="templatemo_header_section" >
+            <div id="templatemo_menu">
+                <ul>
+                    <li><a href="#">Support</a></li>
+                    <li><a href="#">Shopping Cart</a></li>
+                    <li><a href="#">FAQs</a></li>
+                </ul>
+                <marquee style="font-family:Book Antiqua;font-size: larger; height: max-content; color: #fff" bgcolor="#000080" scrollamount="5" >SALE 12.12</marquee>
+            </div>
+            
+            <div class="templatemo_ver_menu">
+                
+                <ul>
+    
+                    <li><a href="#" class="current">Home Page</a></li>
+    
+                    <li> <a href="#">Mobile Phones</a></li>
+    
+                    <li> <a href="#">Accessories</a></li>
+    
+                    <li> <a href="#">Promotions</a></li>
+    
+                    <li> <a href="#">Contact Us</a></li>
+    
+                </ul>
+    
+            </div>
+        </div>
+        <div id="templatemo_content">
+            <div id="templatemo_left_section">
+                <div class="validater">
+                    <a href="http://validator.w3.org/check?uri=referer">
+                            <img height="31" alt="Valid XHTML 1.0 Transitional" src="http://www.w3.org/Icons/valid-xhtml10" width="88" vspace="8" border="0" />
+                    </a>
+                      <a href="http://jigsaw.w3.org/css-validator/check/referer">
+                        <img alt="Valid CSS!" src="http://jigsaw.w3.org/css-validator/images/vcss-blue" vspace="8" border="0" />                 
+                     </a>
+                     Copyright © 2048 <a href="#">Your Company</a><br />
+                     <a href="http://www.iwebsitetemplate.com" target="_parent">Website Templates</a> by <a href="http://www.templatemo.com" target="_parent">Free Templates</a>
+                    
+                </div>
+            </div>
+            <div id="templatemo_center_section">
+                <div class="new">
+                    <h2>Mobile Phone Website</h2>
+                    <p>This is a FREE CSS web template provided by <a href="http://www.templatemo.com" target="_parent">TemplateMo.com</a>. You may apply this layout for any of your websites. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nunc quis sem nec tellus blandit tincidunt.Duis vitae velit sed dui malesuada dignissim. <a href="#"><img alt="Read More" src="https://scontent.fdad3-1.fna.fbcdn.net/v/t39.30808-6/cp0/264638358_438460141098401_2319110700870141823_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=730e14&_nc_ohc=7xNelnuugjgAX_dDbbd&tn=txMtl062vm3NfXl6&_nc_ht=scontent.fdad3-1.fna&oh=45ce78597196c0f3ec421ec654243a5a&oe=61B4DF98" /></a></p>
+                   
+                </div>
+                <div class="new">
+                     <h2>Latest Phone Models </h2>
+                    <div class="product">
+                        <img alt="Mobile Phone Website 1" src="https://scontent.fdad3-5.fna.fbcdn.net/v/t39.30808-6/cp0/264346395_438460377765044_1187737909334135135_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=730e14&_nc_ohc=POETwF9u7nUAX-4fl1-&_nc_ht=scontent.fdad3-5.fna&oh=7281906c06a8215f3c7bea8d54cc999c&oe=61B4A22B" />
+                        <div class="product_text">
+                            <h3>New Model One</h3>
+                          <p>Nulla sed leo sed sapien sagittis aliquet. Vivamus vestibulum condimentum massa.<br />
+                            <span class="price">$600</span> <span class="detail"><a href="#">View Specs</a></span>
+                          </p>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="product">
+                        <img alt="Mobile Phone Website 2" src="https://scontent.fdad3-5.fna.fbcdn.net/v/t39.30808-6/cp0/264346395_438460377765044_1187737909334135135_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=730e14&_nc_ohc=POETwF9u7nUAX-4fl1-&_nc_ht=scontent.fdad3-5.fna&oh=7281906c06a8215f3c7bea8d54cc999c&oe=61B4A22B" />
+                        <div class="product_text">
+                            <h3>Super Phone Two</h3>
+                            <p>Sed pretium, neque hendrerit rhoncus accumsan, nibh tellus pharetra neque, quis rutrum elit justo vitae sapien.<br />
+                            <span class="price">$500</span> <span class="detail"><a href="#">View Specs</a></span>
+                            </p>
+                        </div>                   
+                    </div>
+                    
+                    <div class="product">
+                        <img alt="Mobile Phone Website 3" src="https://scontent.fdad3-5.fna.fbcdn.net/v/t39.30808-6/cp0/264346395_438460377765044_1187737909334135135_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=730e14&_nc_ohc=POETwF9u7nUAX-4fl1-&_nc_ht=scontent.fdad3-5.fna&oh=7281906c06a8215f3c7bea8d54cc999c&oe=61B4A22B" />
+                        <div class="product_text">
+                            <h3>High End Mobile Three</h3>
+                            <p>Donec a purus vel purus sollicitudin placerat. Nunc at sem. Sed pellentesque placerat augue. Phasellus id purus.<br />
+                            <span class="price">$400</span> <span class="detail"><a href="#">View Specs</a></span>
+                            </p> 
+                        </div>                   
+                    </div>
+                    
+                    <div class="product">
+                        <img alt="Mobile Phone Website 4" src="https://scontent.fdad3-5.fna.fbcdn.net/v/t39.30808-6/cp0/264346395_438460377765044_1187737909334135135_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=730e14&_nc_ohc=POETwF9u7nUAX-4fl1-&_nc_ht=scontent.fdad3-5.fna&oh=7281906c06a8215f3c7bea8d54cc999c&oe=61B4A22B" />
+                        <div class="product_text">
+                            <h3>Future  Mobile Four</h3>
+                            <p>Sed pellentesque placerat augue. Phasellus id purus. Donec a purus vel purus sollicitudin placerat. Nunc at sem.<br />
+                            <span class="price">$350</span> <span class="detail"><a href="#">View Specs</a></span>
+                            </p> 
+                        </div>                   
+                    </div>
+                    
+                    <a href="http://www.templatemo.com" target="_parent"><img alt="Read More" src="https://scontent.fdad3-1.fna.fbcdn.net/v/t39.30808-6/cp0/264638358_438460141098401_2319110700870141823_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=730e14&_nc_ohc=7xNelnuugjgAX_dDbbd&tn=txMtl062vm3NfXl6&_nc_ht=scontent.fdad3-1.fna&oh=45ce78597196c0f3ec421ec654243a5a&oe=61B4DF98" /></a>
+                    <br />&nbsp;
+    
+              </div>
+            </div>
+            <div id="templatemo_right_section">
+                 <div class="hot">
+                   <div class="hot_text">
+                     <h2>Brand New Model</h2>
+                  <p>Proin vulputate justo et quam. Cras nisl eros, elementum eu, iaculis vitae, viverra ut, ligula. Pellentesque metus. Duis dolor.</p>
+                </div>
+                </div>
+                <div class="promotion">
+                    <h2>QUALITY PRODUCTS</h2>
+                    <h1>NEW PROMOTION</h1>
+                    <p>Vivamus vulputate felis. Etiam luctus. Quisque facilisis suscipit elit. </p>
+                    <p>&nbsp;</p>
+                    <p>Curabitur eleifend congue leo. Donec a purus vel purus sollicitudin placerat.</p>
+                    <p>&nbsp;</p>
+                      <p>Nunc at sem. Sed pellentesque placerat augue. Mauris pede nisl, placerat nec, lobortis vitae, dictum sed, neque.</p>
+                      <p>&nbsp;</p>
+                  <p><a href="#"><img alt="Read More" src="https://scontent.fdad3-2.fna.fbcdn.net/v/t39.30808-6/cp0/263498366_438460137765068_3847400712915134508_n.jpg?_nc_cat=107&ccb=1-5&_nc_sid=730e14&_nc_ohc=WWd_a4nZ0lsAX9y3pG_&_nc_ht=scontent.fdad3-2.fna&oh=55c1ab7928f70ac0435c3da717f560fa&oe=61B4DFEC" /></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="container">
+    <div class="chatbox">
+        <div class="chatbox__support">
+            <div class="chatbox__header">
+                <div class="chatbox__image--header">
+                    <img src="https://img.icons8.com/color/48/000000/circled-user-female-skin-type-5--v1.png" alt="image">
+                </div>
+                <div class="chatbox__content--header">
+                    <h4 class="chatbox__heading--header" style="color: rgb(197, 247, 16);">SUPER SUPPORT</h4>
+                    <p class="chatbox__description--header">Xin chào mừng quý khách đến với hỗ trợ trực tuyến!</p>
+                </div>
+            </div>
+            <div class="chatbox__messages">
+                <div></div>
+            </div>
+            <div class="chatbox__footer">
+                <input type="text" placeholder="Write a message...">
+                <button class="chatbox__send--footer send__button">Gửi</button>
+            </div>
+        </div>
+        <div class="chatbox__button" style="position: relative;">
+            <button>
+                <svg width="36" height="29" viewBox="0 0 36 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M28.2857 10.5714C28.2857 4.88616 21.9576 0.285714 14.1429 0.285714C6.32813 0.285714 0 4.88616 0 10.5714C0 13.8259 2.08929 16.7388 5.34375 18.6272C4.66071 20.2946 3.77679 21.0781 2.9933 21.9621C2.77232 22.2232 2.51116 22.4643 2.59152 22.846C2.65179 23.1875 2.93304 23.4286 3.23438 23.4286C3.25446 23.4286 3.27455 23.4286 3.29464 23.4286C3.89732 23.3482 4.47991 23.2478 5.02232 23.1071C7.05134 22.5848 8.93973 21.721 10.6071 20.5357C11.7321 20.7366 12.9174 20.8571 14.1429 20.8571C21.9576 20.8571 28.2857 16.2567 28.2857 10.5714ZM36 15.7143C36 12.3594 33.7902 9.38616 30.3951 7.51786C30.6964 8.50223 30.8571 9.52679 30.8571 10.5714C30.8571 14.1674 29.0089 17.4821 25.654 19.933C22.5402 22.183 18.4621 23.4286 14.1429 23.4286C13.5603 23.4286 12.9576 23.3884 12.375 23.3482C14.8862 24.9955 18.221 26 21.8571 26C23.0826 26 24.2679 25.8795 25.3929 25.6786C27.0603 26.8638 28.9487 27.7277 30.9777 28.25C31.5201 28.3906 32.1027 28.4911 32.7054 28.5714C33.0268 28.6116 33.3281 28.3504 33.4085 27.9888C33.4888 27.6071 33.2277 27.3661 33.0067 27.1049C32.2232 26.221 31.3393 25.4375 30.6563 23.7701C33.9107 21.8817 36 18.9888 36 15.7143Z" fill="#581B98"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+</div>
+    <script>
+        class Chatbox {
+            constructor() {
+                this.args = {
+                    openButton: document.querySelector('.chatbox__button'),
+                    chatBox: document.querySelector('.chatbox__support'),
+                    sendButton: document.querySelector('.send__button')
+                }
+
+                this.state = false;
+                this.messages = [];
+            }
+
+            display() {
+                const {openButton, chatBox, sendButton} = this.args;
+
+                openButton.addEventListener('click', () => this.toggleState(chatBox))
+
+                sendButton.addEventListener('click', () => this.onSendButton(chatBox))
+
+                const node = chatBox.querySelector('input');
+                node.addEventListener("keyup", ({key}) => {
+                    if (key === "Enter") {
+                        this.onSendButton(chatBox)
+                    }
+                })
+            }
+
+            toggleState(chatbox) {
+                this.state = !this.state;
+
+                // show or hides the box
+                if(this.state) {
+                    chatbox.classList.add('chatbox--active')
+                } else {
+                    chatbox.classList.remove('chatbox--active')
+                }
+            }
+
+            onSendButton(chatbox) {
+                var textField = chatbox.querySelector('input');
+                let text1 = textField.value
+                if (text1 === "") {
+                    return;
+                }
+
+                let msg1 = { name: "User", message: text1 }
+                this.messages.push(msg1);
+
+                fetch('http://127.0.0.1:5000/predict', {
+                    method: 'POST',
+                    body: JSON.stringify({ message: text1 }),
+                    mode: 'cors',
+                    headers: {
+                    'Content-Type': 'application/json'
+                    },
+                })
+                .then(r => r.json())
+                .then(r => {
+                    let msg2 = { name: "Sam", message: r.answer };
+                    this.messages.push(msg2);
+                    this.updateChatText(chatbox)
+                    textField.value = ''
+
+                }).catch((error) => {
+                    console.error('Error:', error);
+                    this.updateChatText(chatbox)
+                    textField.value = ''
+                });
+            }
+
+            updateChatText(chatbox) {
+                var html = '';
+                this.messages.slice().reverse().forEach(function(item, index) {
+                    if (item.name === "Sam")
+                    {
+                        html += '<div class="messages__item messages__item--visitor">' + item.message + '</div>'
+                    }
+                    else
+                    {
+                        html += '<div class="messages__item messages__item--operator">' + item.message + '</div>'
+                    }
+                });
+
+                const chatmessage = chatbox.querySelector('.chatbox__messages');
+                chatmessage.innerHTML = html;
+            }
+        }
+        const chatbox = new Chatbox();
+        chatbox.display();
+    </script>
+
+    <!-- <script src="/static/jquery.min.js" ></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
+
+</body>
+</html>
